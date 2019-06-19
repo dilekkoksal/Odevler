@@ -1,0 +1,9 @@
+"""Input ile kullanıcıdan bir kelime yazmasını isteyip, bu kelimeyi altı çizili ve etrafı desenli bir şekilde printleyin."""
+text=input("Sekil icinde yazdirmak istediginiz kelimeyi yaziniz:")
+
+print("                    "+"*"*len(text)+"  ","\n",
+      "            ***    "+" "*len(text)+"   ***","\n",
+      "                   "+text+ "     "+       "\n",
+      "                   "+"-"*len(text)+"     ","\n",
+      "            ***    "+" "*len(text)+"   ***","\n",
+      "                   "+"*"*len(text)+"         " )
