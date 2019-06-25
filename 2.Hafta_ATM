@@ -1,0 +1,38 @@
+'''
+5.ODEV: ATM
+    Kullanicinin hesabinda 1000 € olsun. Kullaniciya hangi islemi yapmak istedigini sorun. Kullanicinin yapabilecegi islemler:
+        1-bakiye kontrolu
+        2-para yatirma
+        3-para cekme
+Kulkanicinin secimine gore gerekli islemleri /sorulari devam ettirin ve hesabi guncelleyin.
+
+Kullanici hesabinda olan paradan fazla para cekmek isterse uyarin ve islemi yapamayacagini soyleyin.
+'''
+bakiye=1000
+menu='''yapmak istedigiiniz islemi seciniz:
+        1-Bakiye Kontrolu
+        2-Para yatirma
+        3-Para cekme
+        4-cikis'''
+kontrol=0
+while kontrol==0:
+    print(menu)
+    secim=int(input("secim:"))
+    if secim==1:
+        print("Toplam bakiyeniz:", bakiye , " €")
+    elif secim==2:
+        tutar=float(input("yatirmak istediginiz tutari griniz:"))
+        bakiye+=tutar
+        print("Tutar yatirildi. Son bakiyeniz", bakiye, " €")
+    elif secim==3:
+        tutar=float(input("Cekmek istediginiz tutari griniz:"))
+        bakiye-=tutar
+        print("Tutar cekilde. Son bakiyeniz", bakiye, " €")
+    elif secim==4:
+        kontrol=1
+    else:
+        print("Lutfen menudeki seceneklerden birini seciniz.")
+
+
+
+
