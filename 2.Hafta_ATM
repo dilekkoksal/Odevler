@@ -25,14 +25,16 @@ while kontrol==0:
         bakiye+=tutar
         print("Tutar yatirildi. Son bakiyeniz", bakiye, " €")
     elif secim==3:
-        tutar=float(input("Cekmek istediginiz tutari griniz:"))
+        tutar = float(input("Cekmek istediginiz tutari griniz:"))
+        while  bakiye<tutar:
+            print("girilen tutar bakiyeden buyuktur. Tekrar tutar giriniz..")
+            tutar = float(input("Cekmek istediginiz tutari griniz:"))
         bakiye-=tutar
-        print("Tutar cekilde. Son bakiyeniz", bakiye, " €")
+        print("Tutar cekildi. Son bakiyeniz", bakiye, " €")
     elif secim==4:
         kontrol=1
     else:
         print("Lutfen menudeki seceneklerden birini seciniz.")
-
 
 
 
