@@ -1,0 +1,184 @@
+'''1.ODEV: HESAP OLUSTURMA
+    Kullanicidan, kullanici adi ve parola olusturarak hesap olusturmasini isteyin.
+    Bu aldiginiz bilgileri bir dosyaya yazdirin.
+     Her gırıste dosyadakı bılgıler sıfırlanmasın kayıt bılgılerı dosyaya eklenmeye devam etsın.
+     Kullanici daha once girilmis olan bir kullanici adiyla hesap olusturmak isterse,
+      bu kullanici adinin daha once secildigini ve baska bir kullanici adiyla hesap olusturmasini isteyin.'''
+try:
+    with open("userdatas.txt", "r+") as data:
+        a = data.readlines()
+    while True:
+            with open("userdatas.txt", "r+") as data:
+                a=data.read()
+                ad = input("Kullanici adini giriniz:" + "\nveya Cikmak icin 1 ya basiniz.")
+                if ad!= "1":
+                    if ("Kullanici adi: "+ad)  in a :
+                        print("Bu kullanici adi mevcut. Tekrar giriniz.")
+                        continue
+                    else:
+                        data.write("\nKullanici adi: " + ad)
+                        parola = input("Parolayi giriniz:")
+                        data.write(" Parola:" + parola)
+                else:
+                    break
+
+
+except FileNotFoundError:
+    data= open ("userdatas.txt","w")
+    data.write("Kullanici ve Parola Listesi")
+
+
+
+""" SAYI TAHMINI: Bir degiskene 0-100 arasinda bir deger atayin. Kullanicidan bu sayiyi tahmin etmesini isteyin.
+ Kullaniciyi yaptigi tahminlere gore yonlendirin. Kacinci denemede bildigini soyleyin."""
+
+sayi=45
+deneme=0
+
+while True:
+    deneme = deneme + 1
+    tahmin=int(input("Bir tahminde bulunun:"))
+
+    fark=tahmin-sayi
+    print(fark)
+    if tahmin == sayi:
+        print("{}.denemede bildiniz. Tebrikler".format(deneme))
+        break
+    elif fark<=5 and tahmin>sayi:
+        print("Cok yaklastiniz. Biraz daha dusuk tahminde bulunun.")
+    elif fark>5:
+        print("fazla yukari ciktin biraz asagi in.")
+    elif fark<=-5:
+        print("Fazla asagi indin,biraz yukari cik")
+    elif fark>-5:
+        print("cok yaklastin biraz daha cik")
+    else:
+        break
+        
+       
+       """ LISTE-AYIKLAMA: Ekte gonderilmis olan text dosyasinda 3 takimin futbolcularinin isimleri ve takimlari yer almaktadir. Sizden 3 tane dosya olusturmanizi
+    ve bu 3 dosyaya futbolculari takimlarina gore ayirmanizi istiyoruz."""
+
+with open ("futbolcular.txt", "r", encoding="utf-8") as data:# Futbocular adindaki dosyayi okuma modunda acma satiri
+    veri=data.readlines()# futbolcular.txt dosyasindaki verileri satir satir almak icin eklenilen satir.
+    for i in veri: # dosyadan okunan satir icinde dongu olusturuldu.
+        # Icinde takim isimleri gecen satirlari algilamak icin If bloklari eklendi. Har takim icin ayri dosya olusturulup isimler icine atildi.
+
+        if "Fenerbahçe" in i:
+            with open ("Fenerbahce.txt" , "a+",  encoding="utf-8" ) as d:
+                a=len(i)-len("Fenerbahce")-2
+                d.writelines(i[0:a])
+                d.write("\n")
+
+        if "Beşiktaş" in i:
+            with open ("Beşiktaş.txt" , "a+",  encoding="utf-8" ) as s:
+                a=len(i)-len("Beşiktaş")-2
+
+                s.writelines(i[0:a])
+                s.write("\n")
+        if "Galatasaray" in i:
+            with open ("Galatasaray.txt" , "a+",  encoding="utf-8" ) as b:
+                a=len(i)-len("Galatasaray")-2
+                b.writelines(i[0:a])
+                b.write("\n")
+
+""" ALAN HACIM HESAPLAMA
+
+ Karenin, ucgenin ve diktortgenin alanlarini hesaplayan, kup,kure ve koni seklinde olan cisimlerin hacmini hesaplayan
+ bir program yazmanizi istiyoruz. Kullanicidan hangi seklin alanini veya hangi sekildeki cismin hacmini hesaplamak
+ istedigini sormalisiniz ve o islem icin gereken verileri isteyip hesaplamayi yapmalisiniz.
+"""
+
+head2="1-Alan islemleri\n" \
+     "  1-kare\n" \
+     "  2-ucgen\n" \
+     "  3-dikdortgen\n" \
+      "------->"
+head3="2-Hacim islemleri\n" \
+     "  1-kup\n" \
+     "  2-koni\n" \
+     "  3-kure\n" \
+      "------->"
+
+
+head1="**Alan-Hacim Hesaplama***\n" \
+     "1-Alan islemleri\n" \
+     "2-Hacim islemleri\n" \
+     "3-cikis\n" \
+      "------->"
+while True:
+    secim=int(input(head1))
+    if secim==1:
+        secim_alan=int(input(head2))
+        if secim_alan==1:
+            kenar=int(input("KArenin bir kenar uzunlugunu giriniz:"))
+            print("Karenin Alani:", kenar*kenar)
+            continue
+        elif secim_alan==2:
+            taban=int(input("ucgenin taban uzunlugunu giriniz:"))
+            yukseklik=int(input("uchenin yuksekligini giriniz:"))
+            print("Ucgenin Alani:", (taban*yukseklik)/2)
+            continue
+        elif secim_alan==3:
+            uzun_kenar=int(input("Dikdortgenin uzun kenarini giriniz:"))
+            kisa_kenar=int(input("Dikdortgenin kisa kenarini giriniz:"))
+            print("Dikdortgenin alani:", uzun_kenar*kisa_kenar)
+            continue
+        else:
+            print("Yanlis bir secim yaptiniz. Lutfen menudeki secenekleri kullaniniz.")
+            continue
+    elif secim==2:
+        secim_hacim=int(input(head3))
+        if secim_hacim==1:
+            kup_kenar_uzunluk=int(input("Kupun bir kenar uzunlugunu giriniz:"))
+            print("Kupun hacmi:", kup_kenar_uzunluk**3)
+            continue
+        elif secim_hacim==2:
+            k_yukseklik=int(input("Koninin yuksekliginiz giriniz:"))
+            k_yaricap=int(input("Koninin yaricapini giriniz:"))
+            print("Koninin Hacmi:", 1/3*3.14*(k_yaricap**2)*k_yukseklik)
+            continue
+        elif secim_hacim==3:
+            kure_yari_cap=int(input("Kurenin yaricapini giriniz:"))
+            print("Kurenin Hacmi:", 4/3*3.14*(kure_yari_cap**3))
+            continue
+        else:
+            print("Yanlis bir secim yaptiniz. Lutfen menudeki secenekleri kullaniniz.")
+            continue
+    elif secim==3:
+        break
+
+
+
+""" FIZZ BUZZ OYUN: 1'den 100'e kadar sayilari yazdirin.
+Fakat 3'e tam bolunen sayilarin yerine FIZZ, 5'e tam bolunen sayilarin yerine BUZZ, hem 3'e hem de 5'e tam bolunebilen
+sayilarin yerine FIZZBUZZ yazsin."""
+sayi=0
+while sayi<100:
+    sayi+=1
+    if (sayi%3==0) and (sayi%5==0):
+        print("FIZZBUZZ")
+    elif (sayi%3==0) :
+        print("FIZZ")
+    elif sayi%5==0:
+        print("BUZZ")
+    else:
+        print(sayi)
+        
+        """ ASAL SAYI TAHMIN OYUNU
+ Kullanicidan aldiginiz sayinin asal sayi olup olmadigini sorgulayan bir program yazmanizi istiyoruz.
+"""
+sayi=int(input("Asal sayi durumunu ogrenmek istediginiz sayiyi giriniz:"))
+
+if sayi==2:
+    print("{} sayisi asal bir asyidir".format(sayi))
+else:
+    for i in range(2,sayi):
+        if sayi%i==0:
+            print("{} sayisi asal bir sayi degildir. Conku {} sayisina bolunebilmektedir.".format(sayi,i))
+            break
+        else:
+            print("{} sayisi asal bir sayidir.".format(sayi))
+            break
+
+
