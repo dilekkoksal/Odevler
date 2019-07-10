@@ -1,0 +1,71 @@
+"""KUCUK HARFI BUYUK HARFE CEVIRME
+Kullanıcıdan bir input alınız. Input'taki küçük harfleri büyük harfe dönüştüren bir program yazınız.
+Ör input: Hello World!
+Ör output: HELLO WORLD!
+"""
+
+kelime=input("Lutfen bir kelime giriniz:")
+print("Karakter Dizisinin Buyuk Harfli Hali:", kelime.upper())
+
+"""KARAKTER SAYISI
+Kullanıcıdan bir input alınız. Girmiş olduğu inputta büyük harf sayısı, küçük harf sayısı, rakam sayısı ve bunların haricindeki
+özel karakter sayılarını veren bir program yazınız.
+"""
+string=input("Lutfen bir kelime veya cumle giriniz:")
+rakam_sayisi=0
+buyuk_harf_sayisi=0
+kucuk_harf_sayisi=0
+diger_karakter=0
+for i in string:
+    if i.isnumeric()== True:
+        rakam_sayisi+=1
+    if i.isupper()==True:
+        buyuk_harf_sayisi+=1
+    if i.islower()==True:
+        kucuk_harf_sayisi+=1
+    if i.isnumeric()==False and i.isupper()==False and i.islower()==False:
+        diger_karakter+=1
+print(" Rakam sayisi: {} \n Buyuk Harf sayisi: {} \n Kucuk Harf Sayisi:{}\n Diger Karakter sayisi:{}". format(rakam_sayisi, buyuk_harf_sayisi,kucuk_harf_sayisi,diger_karakter))
+
+
+"""TOPLAMA
+Kullanıcıdan bir input alınız. Girmiş olduğu inputtaki rakamların toplamını veren bir program yazınız.
+(Kullanıcı rakam girmek zorunda değil.
+farklı karakter girişi de yapabilir.)
+Örnek input = "art12kl4*"""
+
+string=input("lutfen karakter dizesi giriniz:")
+toplam=0
+for i in string:
+    if i.isnumeric()==True:
+        toplam+=int(i)
+print("Girilen karakter dizisindeki rakamlarin toplami:{}".format(toplam))
+
+
+"""SESLI HARF ILE BASLAYAN FUTBOLCULAR
+
+Futbolcular dosyasındaki futbolculardan ismi sesli harf ile başlayanları ayrı bir dosyaya yazdırınız.
+"""
+sesli=open("sesli.txt","w",encoding="utf-8")
+sesli_harfler="eiouöüıaEIOUÖÜIA"
+with open("futbolcular.txt","r",encoding="utf-8") as liste:
+    for i in liste:
+        for j in sesli_harfler:
+            if i[0]==j:
+                sesli.write(i)
+
+
+""" TURKCE KARAKTER AYIKLAMA
+Futbolcular dosyasındaki futbolcu isimlerini yazdığınız program ile Türkçe karakter içermeyecek bir hale getirip yeni bir dosyaya kaydediniz.
+"""
+yeni_dosya=open("yeni_futbolcular.txt", "w+", encoding="utf-8")
+turkce_karakterler="çıüğöşİĞÜÖŞÇ"
+ingilizce_karsilik="ciugosIGUOSC"
+num=0
+with open("futbolcular.txt","r+", encoding="utf-8") as liste:
+    for i in liste:
+      for j in turkce_karakterler:
+        if j in i:
+            m=turkce_karakterler.index(j)
+            i = i.replace(j, ingilizce_karsilik[m])
+      yeni_dosya.write(i)
