@@ -1,0 +1,166 @@
+Adam Asmaca
+resim  = ["""
+   +---+
+   |   |
+       |
+       |
+       |
+       |
+=========""","""
+   +---+
+   |   |
+   O   |
+       |
+       |
+       |
+=========""","""
+   +---+
+   |   |
+   O   |
+   |   |
+       |
+       |
+=========""","""
+   +---+
+   |   |
+   O   |
+  /|   |
+       |
+       |
+=========""","""
+   +---+
+   |   |
+   O   |
+  /|\  |
+       |
+       |
+=========""","""
+   +---+
+   |   |
+   O   |
+  /|\  |
+  /    |
+       |
+=========""","""
+   +---+
+   |   |
+   O   |
+  /|\  |
+  / \  |
+       |
+========="""]
+
+menu="""" Adam Asmaca Oyunu
+        1-Harf Tahmini
+        2-Kelimeyi Tahmin et
+        3-Cikis"""
+tahmin_hak=0
+kelime="abara"
+
+harfler= ["-" for i in range(len(kelime))]
+print(harfler)
+
+while tahmin_hak<6:
+    print(menu)
+    secim=input("Lutfen Menuden secim yapiniz:")
+    print("{} adet yanlis tahmin hakkiniz kaldi.:".format(6-tahmin_hak ))
+
+    if secim=='1':
+        harf=input("Harf giriniz:")
+        if harf.isalpha()!=False:
+
+
+            if harf not in kelime:
+                print(resim[tahmin_hak])
+                print("Girilen harf kelimede bulunmamaktadir")
+                tahmin_hak += 1
+            else:
+                k=0
+                for i in kelime or i.upper() in kelime :
+                    if i==harf or i.upper()==harf :
+                        harfler.pop(k)
+                        harfler.insert(k, harf)
+                        k += 1
+                    else:
+                        k += 1
+                if harfler==list(kelime):
+                    print("Tebrikler! {}. tahminde kelimeyi bildiniz.".format(tahmin_hak))
+                    quit()
+                print(harfler)
+        else:
+            print("Harf girmediniz. Lutfen sadece Harf giriniz:")
+            print(menu)
+            secim = input("Lutfen Menuden secim yapiniz:")
+
+    if secim=="2":
+        tahmin_kelime=input("Tahmininin olan kelimeyi giriniz:")
+        if tahmin_kelime==kelime:
+            print("{}. tahminde kelimeyi bildiniz.".format(tahmin_hak))
+            break
+        else:
+            print("Tahmininiz yanlis.")
+            tahmin_hak+=1
+            print(resim[tahmin_hak])
+
+    if secim=="3":
+        break
+
+else:
+    print("Uzgunuz. 6 Tahmin hakkinin tamamini kullandiniz ama basarili olamadiniz.")
+    
+ 
+ 
+ """
+SAYI TAHMIN OYUNU:
+ Kendiniz 4 basamakli, rakamlari birbirinden farkli ve icerisinde 0 rakaminin yer almadigi bir sayi belirleyin.
+Kullanicidan bu sayiyi tahmin etmesini isteyin.
+Yapilan tahmin sonucu kullanicinin, tahminde bulundugu sayidaki rakamlarin degeri ve yeri dogruysa +1,
+degeri dogru fakat yeri dogru degilse -1 ciktisi verecegiz. Bu sekilde tahminde
+bulunmaya devam etmesi saglanacak ve sayiyi tam bir sekilde dogru bildiginde gerekli bilgilendirme yapilip oyun bitirilecek.
+"""
+
+sayi=[1,2,3,4]
+
+while True:
+     rakam_degeri = 0
+     rakam_yeri = 0
+     tahmin=input("Lutfen 4 basamakli bir sayi tahmini giriniz.")
+     tahmin=list(tahmin)
+     for i in range(4):
+        if sayi[i]==int(tahmin[i]):
+           rakam_yeri+=1
+     if sayi==[int(i) for i in tahmin]:
+         print("{} sayisini dogru tahmin ettiniz.".format(sayi))
+         break
+     for i in tahmin:
+         if int(i) in sayi:
+             rakam_degeri+=1
+     print("+", rakam_yeri,"-" ,rakam_degeri-rakam_yeri)
+     print("Toplam {} adet rakam sayida mecut , {} rakamin yeri dogru:".format(rakam_degeri,rakam_yeri))
+
+
+ # İki liste tanımlayın.
+ #   # İlk liste 1'den 10'a kadar sayılardan oluşturun.
+ # İkinci listeyi sırasıyla a'dan başlayarak 10 harf ile oluşturun.
+# İki liste için de döngü kurup, iki listenin elemanlarının bütün kombinasyonlarından oluşan iki yeni liste oluşturun.
+ # 3'er elemanli versiyonunda cıktı olarak bu şekilde bir çıktı beklenmektedir:
+ # 1. [1a, 1b, 1c, 2a, 2b, 2c, 3a, 3b, 3c]
+ # 2. [a1, a2, a3, b1, b2, b3, c1, c2, c3]
+
+sayilar=[i+1 for i in range(10)]
+harfler=['a','b','c','d','e','f','g','h','i','j']
+
+liste1=[str(j)+i for j in sayilar  for i in harfler]
+liste2=[i+str(j) for i in harfler for j in sayilar]
+
+print(liste1)
+print(liste2)
+
+
+
+
+
+
+
+
+ 
