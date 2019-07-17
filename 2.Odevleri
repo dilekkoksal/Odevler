@@ -1,0 +1,174 @@
+'''
+5.ODEV: ATM
+    Kullanicinin hesabinda 1000 € olsun. Kullaniciya hangi islemi yapmak istedigini sorun. Kullanicinin yapabilecegi islemler:
+        1-bakiye kontrolu
+        2-para yatirma
+        3-para cekme
+Kulkanicinin secimine gore gerekli islemleri /sorulari devam ettirin ve hesabi guncelleyin.
+
+Kullanici hesabinda olan paradan fazla para cekmek isterse uyarin ve islemi yapamayacagini soyleyin.
+'''
+bakiye=1000
+menu='''yapmak istedigiiniz islemi seciniz:
+        1-Bakiye Kontrolu
+        2-Para yatirma
+        3-Para cekme
+        4-cikis'''
+kontrol=0
+while kontrol==0:
+    print(menu)
+    secim=int(input("secim:"))
+    if secim==1:
+        print("Toplam bakiyeniz:", bakiye , " €")
+    elif secim==2:
+        tutar=float(input("yatirmak istediginiz tutari griniz:"))
+        bakiye+=tutar
+        print("Tutar yatirildi. Son bakiyeniz", bakiye, " €")
+    elif secim==3:
+        tutar = float(input("Cekmek istediginiz tutari griniz:"))
+        while  bakiye<tutar:
+            print("girilen tutar bakiyeden buyuktur. Tekrar tutar giriniz..")
+            tutar = float(input("Cekmek istediginiz tutari griniz:"))
+        bakiye-=tutar
+        print("Tutar cekildi. Son bakiyeniz", bakiye, " €")
+    elif secim==4:
+        kontrol=1
+    else:
+        print("Lutfen menudeki seceneklerden birini seciniz.")
+
+
+ay=int(input("dogdugunuz ayi rakamsal olarak giriniz="))
+gun=int(input("dogdugunuz gunu rakamsal olarak giriniz="))
+if ay==1:
+    if gun<=21:
+        burc="oglak"
+    elif gun>21:
+        burc="kova"
+elif ay==2:
+    if gun <=19:
+        burc="kova"
+    elif gun>19:
+        burc="balik"
+elif ay==3:
+    if gun <=21:
+        burc="balik"
+    elif gun>21:
+        burc="koc"
+elif ay==4:
+    if gun<=21:
+        burc="koc"
+    elif gun>21:
+        burc="boga"
+elif ay ==5:
+    if gun<=21:
+        burc="boga"
+    elif gun>21:
+        burc="ikizler"
+elif ay ==6:
+    if gun<=22:
+        burc="ikizler"
+    elif gun>22:
+        burc="yengec"
+elif ay ==7:
+    if gun<=22:
+        burc="yengec"
+    elif gun>22:
+        burc="aslan"
+elif ay ==8:
+    if gun<=23:
+        burc="aslan"
+    elif gun>23:
+        burc="basak"
+elif ay ==9:
+    if gun<=23:
+        burc="basak"
+    elif gun>23:
+        burc="terazi"
+elif ay ==10:
+    if gun<=23:
+        burc="terazi"
+    elif gun>23:
+        burc="akrep"
+elif ay ==11:
+    if gun<=22:
+        burc="akrep"
+    elif gun>22:
+        burc="yay"
+elif ay ==12:
+    if gun<=21:
+        burc="yay"
+    elif gun>21:
+        burc="oglak"
+
+
+print("Burcunuz= "+burc)
+
+
+
+'''3.ODEV: PAROLA KARAKTER KONTROLU
+Kullanicidan 3-18 karakter arasinda bir username olusturmasini isteyin. Eger username’in uzunlugu 3’ten az veya 18’deb fazla ise gerekli uyariyi yapin ve kullaniciya tekrar username sorun.
+Sonrasinda kullanicidan 6 ile 12 karakter araliginda bir parola olusturmasini isteyin. Olusturulan parolanin 6dan kisa ya da uzun olmasi durumlarinda tekrar gerekli uyarilari yapin.
+Iki durumun sartlari da saglaniyorsa username ve parolayi hem ekrana printleyin hem de bir dosyaya kaydedin.'''
+
+
+username=input("Kullanici adinizi giriniz:")
+while len(username)<3 or len(username)>18:
+        print("Kullanici adinin uzunlugu 3 den kucuk ve 18 den fazla olmamalidir. ")
+        username = input("Kullanici adinizi giriniz:")
+parola= input("Parolanizi giriniz:")
+while len(parola)<6 or len(parola)>12:
+         print("Parolanizin uzunlugu 6 karakterden uzun ve 12 karakterden kisa olmalidir.")
+         parola = input("Parolanizi giriniz:")
+print("Kullanici adiniz:{}, Parolaniz:{}".format(username,parola))
+dosya=open("KullaniciadiParola.txt","w")
+print(username,parola,file=dosya)
+
+
+'''
+4.ODEV: SAYI TAHMIN OYUNU
+    Bir degiskene 1-10 arasinda bir sayi atayin.Kullanicidan bu sayiyi tahmin etmesini isteyin.
+    Kullanici 5 denemede bilirse 1 yildiz kazansin, 3 denemede bilirse 2 yildiz kazansin, 1 denemede bilirse 3 yildiz kazansin.
+'''
+sayi=8
+deneme=0
+tahmin=0
+while sayi!=tahmin :
+    tahmin = int(input("lutfen 1-10 arasi bir rakam giriniz:"))
+    deneme+=1
+if deneme==1:
+    print("Tebrikler 3 yildiz kazandiniz:*** ")
+elif deneme<=3:
+    print("Tebrikler 2 yildiz kazandiniz:** ")
+elif deneme<=5:
+    print("Tebrikler 1 yildiz kazandiniz:* ")
+else:
+    print("5 denemeden fazla sayida tahmin ettiginiz icin hic yildiz kazanamadiniz. ")
+    
+    
+    
+ '''2.ODEV: UZAKLIK BIRIMI DONUSUMU
+    Kullanicadan 2 input alinacak:
+        1-km-mil donusumu mu yapmak istiyor, mil-km donusumu mu yapmak istiyor.
+        2-donusturmek istedigi birimin uzunlugu kactir?
+    Donusum yapilacak birimler mil ve kilometre olacak.'''
+
+tercih=('''---Yapmak istediginiz islemi seciniz---
+             1-Km-Mil donusumu                  
+             2-Mil-Km donusumu
+             ** cikmak icin 3 e basiniz..
+''')
+
+a=1
+while a==1:
+    print(tercih)
+    secim = input()
+    if secim=="1":
+        uzunluk=float(input("Mile donusturmek istediginiz uzunluk Kac KM dir?"))
+        print("{} Km {} mildir". format(uzunluk,uzunluk/1.609344))
+    elif secim=="2" :
+        uzunluk = float(input("KM ye donusturmek istediginiz uzunluk Kac Mil dir?"))
+        print("{} Mil {} KM'dir". format(uzunluk,uzunluk*1.609344))
+    elif secim=="3":
+         a=3
+    else:
+         print("lutfen istenilen degerlerden birini giriniz:")
