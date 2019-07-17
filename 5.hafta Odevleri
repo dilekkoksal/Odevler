@@ -1,3 +1,5 @@
+
+#BU KOD CALISIYOR
 Adam Asmaca
 resim  = ["""
    +---+
@@ -110,6 +112,7 @@ else:
     
  
  
+#BU KOD CALISIYOR
  """
 SAYI TAHMIN OYUNU:
  Kendiniz 4 basamakli, rakamlari birbirinden farkli ve icerisinde 0 rakaminin yer almadigi bir sayi belirleyin.
@@ -138,7 +141,7 @@ while True:
      print("+", rakam_yeri,"-" ,rakam_degeri-rakam_yeri)
      print("Toplam {} adet rakam sayida mecut , {} rakamin yeri dogru:".format(rakam_degeri,rakam_yeri))
 
-
+#BU KOD CALISIYOR
  # İki liste tanımlayın.
  #   # İlk liste 1'den 10'a kadar sayılardan oluşturun.
  # İkinci listeyi sırasıyla a'dan başlayarak 10 harf ile oluşturun.
@@ -153,8 +156,7 @@ harfler=['a','b','c','d','e','f','g','h','i','j']
 liste1=[str(j)+i for j in sayilar  for i in harfler]
 liste2=[i+str(j) for i in harfler for j in sayilar]
 
-print(liste1)
-print(liste2)
+print(liste1 ,"\n", liste2)
 
 
 
