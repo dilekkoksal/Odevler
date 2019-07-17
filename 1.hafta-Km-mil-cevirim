@@ -1,4 +1,0 @@
-"""Kullanıcıdan input ile km cinsinden mesafe bilgisi alıp, bu bilgiyi mile dönüştürün ve sonucu ekrana printleyin."""
-km=float(input("Alinan mesafeyi Km cinsinden giriniz:"))
-mil=km/1.609344
-print("Alinan ",km,"km ", mil , " mil eder." )
