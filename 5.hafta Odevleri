@@ -122,24 +122,42 @@ degeri dogru fakat yeri dogru degilse -1 ciktisi verecegiz. Bu sekilde tahminde
 bulunmaya devam etmesi saglanacak ve sayiyi tam bir sekilde dogru bildiginde gerekli bilgilendirme yapilip oyun bitirilecek.
 """
 
-sayi=[1,2,3,4]
 
+sayi=[1,2,3,4]
 while True:
-     rakam_degeri = 0
-     rakam_yeri = 0
-     tahmin=input("Lutfen 4 basamakli bir sayi tahmini giriniz.")
-     tahmin=list(tahmin)
-     for i in range(4):
+    tahmin=input("4 basamakli rakamlari farkli bir sayi tahmin ediniz:")
+    if tahmin.isdigit()==False:
+        print("sadece rakam kullaniniz!")
+        continue
+    tahmin=list(tahmin)
+    k=0
+    while k<len(tahmin):
+        if tahmin.count(tahmin[k]) > 1:
+            print("her rakami farkli bir sayi giriniz!!!")
+            tahmin = input("4 basamakli rakamlari farkli bir sayi tahmin ediniz:")
+            if tahmin.isdigit() == False:
+                print("Lutfen sadece rakam kullaniniz!")
+                tahmin = input("4 basamakli rakamlari farkli bir sayi tahmin ediniz:")
+                tahmin = list(tahmin)
+                k=0
+                continue
+        else:
+                k=k+1
+    rakam_degeri = 0
+    rakam_yeri = 0
+
+    for i in range(4):
         if sayi[i]==int(tahmin[i]):
-           rakam_yeri+=1
-     if sayi==[int(i) for i in tahmin]:
+            rakam_yeri+=1
+    if sayi==[int(i) for i in tahmin]:
          print("{} sayisini dogru tahmin ettiniz.".format(sayi))
          break
-     for i in tahmin:
-         if int(i) in sayi:
-             rakam_degeri+=1
-     print("+", rakam_yeri,"-" ,rakam_degeri-rakam_yeri)
-     print("Toplam {} adet rakam sayida mecut , {} rakamin yeri dogru:".format(rakam_degeri,rakam_yeri))
+    for i in tahmin:
+        if int(i) in sayi:
+            rakam_degeri+=1
+    print("+", rakam_yeri,"-" ,rakam_degeri-rakam_yeri)
+    print("Toplam {} adet rakam sayida mecut , {} rakamin yeri dogru:".format(rakam_degeri,rakam_yeri))
+
 
 #BU KOD CALISIYOR
  # İki liste tanımlayın.
